@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+
+<body>
+    <h1 id="root"></h1>
+
+    <script>
+        // FINDMISSINGNUMBER
+        function findMissingNumnber(arr){
+            const n = arr.length + 1;
+            const totalsum = (n*(n+1))/2;
+            const arraysum = arr.reduce((acc,curr)=>acc+curr,0);
+            return totalsum- arraysum;
+        }
+
+        const number = [1, 3, 4, 5, 6, 7, 8, 9, 10];
+        const missingNumber = findMissingNumnber(number);
+        console.log("the missing number is:",missingNumber);
+
+// REMOVEDUPLICATES
+        function removeDuplicates(nums) {
+    if (nums.length === 0) 
+      return 0;
+    
+    let i = 0;
+    for (let j = 1; j < nums.length; j++) {
+        if (nums[j] !== nums[i]) {
+            i++;
+            nums[i] = nums[j];
+        }
+    }
+    
+    return i + 1;
+}
+const testInputArray = [1, 1, 1, 2, 2, 3, 3, 3, 4, 5];
+const testNewLength = removeDuplicates(testInputArray);
+console.log("New Length:", testNewLength);
+console.log("after removing duplicates:", testInputArray.slice(0, testNewLength));
+
+// FACTORIAL 
+
+function factorial(n) {
+    if (n === 0 || n === 1) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
+const num = 5;
+console.log(`Factorial ${num}:`, factorial(num));
+
+
+function reverseArray(arr, start, end) {
+    while (start < end) {
+        const temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
+    }
+}
+// ROTATE ARRAY
+function rotateArray(nums, k) {
+    const n = nums.length;
+    k %= n; 
+    reverseArray(nums, 0, n - 1);
+    reverseArray(nums, 0, k - 1);
+    reverseArray(nums, k, n - 1);
+}
+
+const inputArray = [3, 8, 9, 2, 5];
+const k = 2;
+rotateArray(inputArray, k);
+console.log("Rotated Array:", inputArray);
+
+    </script>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+
+</html>
